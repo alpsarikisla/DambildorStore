@@ -1,0 +1,37 @@
+﻿@model DambildorStore.Models.Category
+@{
+    ViewBag.Title = "CreateCategory";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Kategori Güncelle</h1>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="mt-1 mb-1">
+                @Html.DisplayNameFor(Model => Model.Name)
+                @Html.EditorFor(Model => Model.Name, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="mt-1 mb-1">
+                @Html.DisplayNameFor(Model => Model.Description)
+                @Html.EditorFor(Model => Model.Description, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.Description, "", new { @class = "text-danger" })
+            </div>
+            <div class="mt-1 mb-1">
+                @Html.DisplayNameFor(Model => Model.Status)
+                @Html.EditorFor(Model => Model.Status)
+            </div>
+            <div class="mt-3">
+                <input type="submit" class="btn btn-primary" value="Kategori Güncelle" />
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head lang="tr">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="navbar navbar-dark sticky-top bg-warning flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 px-3" href="@Url.Action("Index","Home")">DambıldorStore.com Admin Paneli</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="flex-shrink-0 dropdown d-none d-md-flex mx-3">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="true">
+                <img src="~/Areas/AdminPanel/Images/UserImages/photo-1570295999919-56ceb5ecca61.jpg" alt="mdo" class="rounded-circle" width="32" height="32">
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);" data-popper-placement="bottom-end">
+                <li><a class="dropdown-item" href="#">Profilim</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Çıkış</a></li>
+            </ul>
+        </div>
+    </header>
+    <nav class="py-2 bg-light border-bottom d-md-none ">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav">
+                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Profil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Çıkış</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Home")">
+                                <span data-feather="home"></span>
+                                Anasayfa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Category")">
+                                <span data-feather="home"></span>
+                                Kategori İşlemleri
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Brand")">
+                                <span data-feather="home"></span>
+                                Marka İşlemleri
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Ayarlar</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Kullanıcı Ayarları
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
