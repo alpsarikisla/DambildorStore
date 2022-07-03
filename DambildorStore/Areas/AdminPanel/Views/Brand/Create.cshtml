@@ -13,7 +13,6 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="mt-1 mb-1">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })

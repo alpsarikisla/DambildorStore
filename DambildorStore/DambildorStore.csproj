@@ -133,6 +133,8 @@
     <Compile Include="Areas\AdminPanel\Controllers\CategoryController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\ManagerLoginController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\ProductController.cs" />
+    <Compile Include="Areas\AdminPanel\Filters\AdminAuthenticationFilterAttribute.cs" />
     <Compile Include="Areas\AdminPanel\Model\ViewModels\AdminLoginViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +145,7 @@
     <Compile Include="Models\DambildorModel.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\ManagerType.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +178,8 @@
     <Content Include="Areas\AdminPanel\Views\Brand\Edit.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Brand\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\ManagerLogin\Login.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Product\Create.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Product\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -193,6 +198,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminPanel\Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Images\ProductImages\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

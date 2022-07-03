@@ -19,7 +19,6 @@
             @Html.AntiForgeryToken()
             <img src="~/Areas/AdminPanel/Images/login-01.png" class="mb-4" />
             <h1 class="h3 mb-3 fw-normal">Lütfen Giriş Yapınız</h1>
-
             <div class="form-floating">
                 @Html.EditorFor(model => model.Mail, new { htmlattributes = new { @class = "form-control" } })
                 <label for="floatingInput">Email address</label>

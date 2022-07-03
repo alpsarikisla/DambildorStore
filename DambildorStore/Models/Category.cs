@@ -20,5 +20,7 @@ namespace DambildorStore.Models
 
         [Display(Name = "Durum")]
         public bool Status { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DambildorStore.Models;
+﻿using DambildorStore.Areas.AdminPanel.Filters;
+using DambildorStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace DambildorStore.Areas.AdminPanel.Controllers
 {
+    [AdminAuthenticationFilter]
     public class CategoryController : Controller
     {
         DambildorModel db = new DambildorModel();

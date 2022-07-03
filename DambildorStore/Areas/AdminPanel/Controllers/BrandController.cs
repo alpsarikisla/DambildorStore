@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DambildorStore.Areas.AdminPanel.Filters;
 using DambildorStore.Models;
 
 namespace DambildorStore.Areas.AdminPanel.Controllers
 {
+    [AdminAuthenticationFilter]
     public class BrandController : Controller
     {
         private DambildorModel db = new DambildorModel();
