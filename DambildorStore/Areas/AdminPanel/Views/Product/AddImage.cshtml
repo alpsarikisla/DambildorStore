@@ -1,0 +1,70 @@
+﻿@using DambildorStore.Models
+@{
+    ViewBag.Title = "AddImage";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_LayoutPage1.cshtml";
+    Product p = ViewBag.product as Product;
+}
+
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Ürün Resimleri</h1>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-header bg-info bg-opacity-50">
+                Ürün Bilgileri
+            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="~/Images/ProductImages/@p.CoverImage" class="img-thumbnail" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@p.Name</td>
+                    </tr>
+                    <tr>
+                        <td>@p.Category.Name</td>
+                    </tr>
+                    <tr>
+                        <td>@p.Brand.Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header bg-warning bg-opacity-50">
+                Ürün Resimleri
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var item in p.ProductImages)
+                    {
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="~/Images/ProductImages/@item.ImagePath" class="card-img" />
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="btn btn-sm btn-danger">Sil</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("AddImage", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="resim" class="form-control" />
+                    <br />
+                    <button type="submit" class="btn btn-primary"> Resim Ekle</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
