@@ -37,7 +37,7 @@
                 <td>
                     <a href="@Url.Action("AddImage","Product", new { id= item.ID})" class="btn btn-sm btn-secondary">+</a>
                     <a href="@Url.Action("Edit","Product", new { id= item.ID})" class="btn btn-sm btn-info">Güncelle</a>
-                    <a href="@Url.Action("DeleteCategory","Category", new { id= item.ID})" class="btn btn-sm btn-danger">Sil</a>
+                    <a href="@Url.Action("Delete","Product", new { id= item.ID})" class="btn btn-sm btn-danger">Sil</a>
                 </td>
             </tr>
         }

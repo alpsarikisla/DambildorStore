@@ -1,0 +1,73 @@
+﻿@model DambildorStore.Models.Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="~/Images/ProductImages/@Model.CoverImage" class="d-block w-100" alt="...">
+                                    </div>
+                                    @foreach (var item in Model.ProductImages)
+                                    {
+                                        <div class="carousel-item">
+                                            <img src="~/Images/ProductImages/@item.ImagePath" class="d-block w-100" alt="...">
+                                        </div>
+                                    }
+
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>@Model.Name</h4>
+                            <hr />
+                            <div style="font-size:8pt">
+                                <span class="text-secondary">Kategori:</span>
+                                <a href=""> @Model.Category.Name</a> |
+                                <span class="text-secondary">Marka:</span>
+                                <a href=""> @Model.Brand.Name</a>
+                            </div>
+                            <hr />
+                            <h3 class="text-warning mb-3">@Model.Price ₺</h3>
+
+                            <div class="d-grid">
+                                <a href="#" class="btn btn-sm btn-warning">Satın Al</a>
+                            </div>
+                            <p class="text-secondary mt-4" style="font-size:10pt">@Model.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Benzer Ürünler</h4>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
