@@ -44,5 +44,7 @@ namespace DambildorStore.Models
 
         [Display(Name = "Satış Durum")]
         public bool SellStatus { get; set; }
+
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
     }
 }

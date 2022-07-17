@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DambildorStore.Models.Product>
 @{
     ViewBag.Title = "Ürün Listesi";
     Layout = "~/Areas/AdminPanel/Views/Shared/_LayoutPage1.cshtml";
@@ -10,4 +10,36 @@
         <a href="@Url.Action("Create","Product")" class="btn btn-sm btn-outline-warning">Ürün Ekle +</a>
     </div>
 </div>
-
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ID)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Category.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Brand.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Stock)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.SellStatus)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Category.Name</td>
+                <td>@item.Brand.Name</td>
+                <td>@item.Stock adet</td>
+                <td>@item.Price ₺</td>
+                <td>@item.SellStatus</td>
+                <td>
+                    <a href="@Url.Action("AddImage","Product", new { id= item.ID})" class="btn btn-sm btn-secondary">+</a>
+                    <a href="@Url.Action("Edit","Product", new { id= item.ID})" class="btn btn-sm btn-info">Güncelle</a>
+                    <a href="@Url.Action("DeleteCategory","Category", new { id= item.ID})" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

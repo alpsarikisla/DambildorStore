@@ -10,7 +10,7 @@ namespace DambildorStore.Models
     {
         public int ID { get; set; }
 
-        [Display(Name="Isim")]
+        [Display(Name="Kategori Adı")]
         [Required(ErrorMessage ="Bu alan zorunludur")]
         [StringLength(maximumLength:50, ErrorMessage = "Bu alan en fazla 50 karakter olmalıdır")]
         public string Name { get; set; }

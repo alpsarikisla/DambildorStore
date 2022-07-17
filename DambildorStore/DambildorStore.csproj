@@ -146,6 +146,7 @@
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\ManagerType.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,8 @@
     <Content Include="Areas\AdminPanel\Views\ManagerLogin\Login.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Product\Create.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Product\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Product\AddImage.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
