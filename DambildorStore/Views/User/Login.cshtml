@@ -1,0 +1,48 @@
+﻿@model DambildorStore.Models.ViewModels.UserLoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Hesabınıza Giriş Yapınız</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            @using (Html.BeginForm())
+                            {
+                                <div>
+                                    @Html.LabelFor(model => model.Mail)
+                                    @Html.EditorFor(model => model.Mail, new { htmlattributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Mail, null, new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(model => model.Password)
+                                    @Html.EditorFor(model => model.Password, new { htmlattributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                                </div>
+                                <div class="mt-5">
+                                    <div class="d-grid">
+                                        <button class="btn btn-warning" type="submit">Hesabıma Giriş Yap</button>
+                                    </div>
+                                    
+                                </div>
+                            }
+                        </div>
+                        <div class="col-8">
+                            <img src="~/Images/largest-ecommerce-companies.jpg" class="img-thumbnail" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

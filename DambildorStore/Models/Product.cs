@@ -46,5 +46,6 @@ namespace DambildorStore.Models
         public bool SellStatus { get; set; }
 
         public virtual ICollection<ProductImage> ProductImages { get; set; }
+        public virtual ICollection<UserCart> UserCarts { get; set; }
     }
 }

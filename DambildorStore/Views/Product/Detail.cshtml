@@ -45,10 +45,16 @@
                             </div>
                             <hr />
                             <h3 class="text-warning mb-3">@Model.Price ₺</h3>
-
-                            <div class="d-grid">
-                                <a href="#" class="btn btn-sm btn-warning">Satın Al</a>
-                            </div>
+                           <div class="row">
+                               <div class="col-md-6">
+                                   <input type="number" class="form-control" value="1"/>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="d-grid">
+                                       <a href="#" class="btn btn-warning">Sepete Ekle</a>
+                                   </div>
+                               </div>
+                           </div>
                             <p class="text-secondary mt-4" style="font-size:10pt">@Model.Description</p>
                         </div>
                     </div>

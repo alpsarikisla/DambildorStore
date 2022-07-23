@@ -18,6 +18,8 @@ namespace DambildorStore.Models
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductImage> ProductImages { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserCart> UserCarts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

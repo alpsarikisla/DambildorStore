@@ -1,5 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using DambildorStore.Models
+<!DOCTYPE html>
+@{
+    DambildorModel db = new DambildorModel();
+    List<UserCart> cartList = new List<UserCart>();
+    if (Session["user"] != null)
+    {
+        User u = Session["user"] as User;
+        int id = u.ID;
+        cartList = db.UserCarts.Where(x => x.User_ID == id).ToList();
+    }
 
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -19,11 +30,20 @@
                 <li><a href="@Url.Action("Index","Home")" class="nav-link px-2 link-dark">Özel Seri</a></li>
                 <li><a href="@Url.Action("Index","Home")" class="nav-link px-2 link-dark">İletişim</a></li>
             </ul>
-
-            <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Giriş Yap</button>
-                <button type="button" class="btn btn-primary">Üye Ol</button>
-            </div>
+            @if (Session["user"] == null)
+            {
+                <div class="col-md-3 text-end">
+                    <a href="@Url.Action("Login","User")" type="button" class="btn btn-outline-primary me-2">Giriş Yap</a>
+                    <button type="button" class="btn btn-primary">Üye Ol</button>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-3 text-end">
+                    <a href="@Url.Action("Index","UserCart")" type="button" class="btn btn-outline-primary me-2">Sepetim (@cartList.Count) </a>
+                    <a href="@Url.Action("LogOut","User")" type="button" class="btn btn-primary">Çıkış Yap</a>
+                </div>
+            }
         </header>
     </div>
     <div>

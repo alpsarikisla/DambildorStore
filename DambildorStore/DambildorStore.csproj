@@ -118,6 +118,7 @@
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\signin.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\largest-ecommerce-companies.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -139,6 +140,8 @@
     <Compile Include="Areas\AdminPanel\Model\ViewModels\AdminLoginViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserCartController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
     <Compile Include="Models\ManagerType.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductImage.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserCart.cs" />
+    <Compile Include="Models\ViewModels\PayViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserLoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +203,9 @@
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\UserCart\Index.cshtml" />
+    <Content Include="Views\UserCart\Buyproducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

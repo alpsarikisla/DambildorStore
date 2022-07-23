@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DambildorStore.Models.UserCart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Sepetim</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>
+                                        Resim
+                                    </th>
+                                    <th> <label class="d-none d-sm-block">Isim</label></th>
+                                    <th>Adet</th>
+                                    <th></th>
+                                    <th>Fiyat</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th style="vertical-align:middle">@item.ID</th>
+                                        <th><img src="~/Images/ProductImages/@item.Product.CoverImage" class="img-thumbnail " width="100" /></th>
+                                        <th style="vertical-align:middle">
+                                            <label class="d-none d-sm-block">@item.Product.Name</label>
+                                        </th>
+                                        <th style="vertical-align:middle">@item.Quantity</th>
+                                        <th style="vertical-align:middle">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="@Url.Action("increase", "UserCart", new { id= item.ID})" type="button" class="btn btn-outline-success btn-sm">+</a>
+                                                <a href="@Url.Action("decrease", "UserCart", new { id= item.ID})" type="button" class="btn btn-outline-danger btn-sm">-</a>
+
+                                            </div>
+                                        </th>
+                                        <th style="vertical-align:middle">
+                                            @{
+                                                decimal total = item.Product.Price * item.Quantity;
+                                            }
+                                            @total ₺
+                                        </th>
+                                        <th style="vertical-align:middle">
+                                            <a href="#" class="btn btn-danger btn-sm">Sil</a>
+                                        </th>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    
+                    <a href="@Url.Action("Index","Home")" class="btn btn-secondary float-end">Alışverişe Devam Et</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Sepet Toplamı</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <td>Ara Toplam</td>
+                            <td style="font-weight:900">
+                                @{
+                                    decimal semitotal = Model.Sum(x => x.Quantity * x.Product.Price) * 0.82m;
+                                }
+                                <label class="float-end"> @semitotal ₺</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Vergi</td>
+                            <td style="font-weight:900">
+                                @{
+                                    decimal totaltax = Model.Sum(x => x.Quantity * x.Product.Price) * 0.18m;
+                                }
+                                <label class="float-end"> @totaltax ₺</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Toplam</td>
+                            <td style="font-weight:900">
+                                @{ 
+                                    decimal totalPrice = Model.Sum(x => x.Quantity * x.Product.Price);
+                                }
+                                <label class="float-end"> @totalPrice ₺</label>
+                               
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid">
+                        <a href="@Url.Action("BuyProducts","UserCart")" class="btn btn-success">Ödemeye Geç</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
