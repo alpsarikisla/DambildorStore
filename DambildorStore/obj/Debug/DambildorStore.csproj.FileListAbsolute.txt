@@ -150,3 +150,7 @@ C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\obj\Debug\DambildorS
 C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\obj\Debug\DambildorStore.csproj.CopyComplete
 C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\obj\Debug\DambildorStore.dll
 C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\obj\Debug\DambildorStore.pdb
+C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\bin\Newtonsoft.Json.dll
+C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\bin\System.Net.Http.Formatting.dll
+C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\bin\Newtonsoft.Json.xml
+C:\Users\303\Documents\GitHub\DambildorStore\DambildorStore\bin\System.Net.Http.Formatting.xml
