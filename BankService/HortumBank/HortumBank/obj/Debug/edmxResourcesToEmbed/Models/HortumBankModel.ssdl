@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HortumBankDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MusteriHesaplar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Musteri_ID" Type="int" />
+    <Property Name="KartNumarası" Type="nvarchar" MaxLength="16" />
+    <Property Name="SonKullanmaAy" Type="int" />
+    <Property Name="SonKullanmaYil" Type="int" />
+    <Property Name="CVV" Type="int" />
+    <Property Name="Bakiye" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Isim" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyisim" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="SanalPosMusteri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Isim" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaticiNo" Type="nvarchar" MaxLength="10" />
+    <Property Name="SaticiSifre" Type="nvarchar" MaxLength="10" />
+    <Property Name="Bakiye" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_MusteriHesaplar_Musteriler">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+    <End Role="MusteriHesaplar" Type="Self.MusteriHesaplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MusteriHesaplar">
+        <PropertyRef Name="Musteri_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HortumBankDBModelStoreContainer">
+    <EntitySet Name="MusteriHesaplar" EntityType="Self.MusteriHesaplar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SanalPosMusteri" EntityType="Self.SanalPosMusteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MusteriHesaplar_Musteriler" Association="Self.FK_MusteriHesaplar_Musteriler">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="MusteriHesaplar" EntitySet="MusteriHesaplar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HortumBankDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MusteriHesaplar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Musteri_ID" Type="int" />
+          <Property Name="KartNumarası" Type="nvarchar" MaxLength="16" />
+          <Property Name="SonKullanmaAy" Type="int" />
+          <Property Name="SonKullanmaYil" Type="int" />
+          <Property Name="CVV" Type="int" />
+          <Property Name="Bakiye" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="SanalPosMusteri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaticiNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="SaticiSifre" Type="nvarchar" MaxLength="10" />
+          <Property Name="Bakiye" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_MusteriHesaplar_Musteriler">
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+          <End Role="MusteriHesaplar" Type="Self.MusteriHesaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteriler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MusteriHesaplar">
+              <PropertyRef Name="Musteri_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HortumBankDBModelStoreContainer">
+          <EntitySet Name="MusteriHesaplar" EntityType="Self.MusteriHesaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanalPosMusteri" EntityType="Self.SanalPosMusteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MusteriHesaplar_Musteriler" Association="Self.FK_MusteriHesaplar_Musteriler">
+            <End Role="Musteriler" EntitySet="Musteriler" />
+            <End Role="MusteriHesaplar" EntitySet="MusteriHesaplar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HortumBankDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MusteriHesaplar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Musteri_ID" Type="Int32" />
+          <Property Name="KartNumarası" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="SonKullanmaAy" Type="Int32" />
+          <Property Name="SonKullanmaYil" Type="Int32" />
+          <Property Name="CVV" Type="Int32" />
+          <Property Name="Bakiye" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Musteriler" Relationship="Self.FK_MusteriHesaplar_Musteriler" FromRole="MusteriHesaplar" ToRole="Musteriler" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MusteriHesaplar" Relationship="Self.FK_MusteriHesaplar_Musteriler" FromRole="Musteriler" ToRole="MusteriHesaplar" />
+        </EntityType>
+        <EntityType Name="SanalPosMusteri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaticiNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SaticiSifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Bakiye" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_MusteriHesaplar_Musteriler">
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+          <End Role="MusteriHesaplar" Type="Self.MusteriHesaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Musteriler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MusteriHesaplar">
+              <PropertyRef Name="Musteri_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HortumBankDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MusteriHesaplar" EntityType="Self.MusteriHesaplar" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
+          <EntitySet Name="SanalPosMusteri" EntityType="Self.SanalPosMusteri" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_MusteriHesaplar_Musteriler" Association="Self.FK_MusteriHesaplar_Musteriler">
+            <End Role="Musteriler" EntitySet="Musteriler" />
+            <End Role="MusteriHesaplar" EntitySet="MusteriHesaplar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HortumBankDBModelStoreContainer" CdmEntityContainer="HortumBankDBEntities">
+          <EntitySetMapping Name="MusteriHesaplar">
+            <EntityTypeMapping TypeName="HortumBankDBModel.MusteriHesaplar">
+              <MappingFragment StoreEntitySet="MusteriHesaplar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Musteri_ID" ColumnName="Musteri_ID" />
+                <ScalarProperty Name="KartNumarası" ColumnName="KartNumarası" />
+                <ScalarProperty Name="SonKullanmaAy" ColumnName="SonKullanmaAy" />
+                <ScalarProperty Name="SonKullanmaYil" ColumnName="SonKullanmaYil" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteriler">
+            <EntityTypeMapping TypeName="HortumBankDBModel.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Isim" ColumnName="Isim" />
+                <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanalPosMusteri">
+            <EntityTypeMapping TypeName="HortumBankDBModel.SanalPosMusteri">
+              <MappingFragment StoreEntitySet="SanalPosMusteri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Isim" ColumnName="Isim" />
+                <ScalarProperty Name="SaticiNo" ColumnName="SaticiNo" />
+                <ScalarProperty Name="SaticiSifre" ColumnName="SaticiSifre" />
+                <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HortumBankDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
